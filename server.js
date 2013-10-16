@@ -40,8 +40,9 @@ app.get('/popular', function (req, res){
         );
 
         items.push({
-          query: queryString["q"],
           title: $(el).text().replace('·', ''),
+          query: queryString["q"],
+          query_url: link,
           image_url: 'http://www.bing.com' + $(el).find('img').attr('src'),
           image_width: 160,
           image_height: 80
