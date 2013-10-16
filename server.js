@@ -20,6 +20,11 @@ app.get('/', function(req, res){
   res.render('index');
 });
 
+// Proxy for the homepage images
+app.get('/images', function(req, res){
+  request.get('http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=10').pipe(res);
+});
+
 // API request
 app.get('/popular', function (req, res){
 
