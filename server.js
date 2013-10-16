@@ -16,8 +16,9 @@ app.configure(function(){
   app.set('view engine', 'jade');
 });
 
-// var htmlString = fs.readFileSync('public/hpm.html').toString()
-// var parsedHTML = $.load(htmlString)
+app.get('/', function(req, res){
+  res.render('index');
+});
 
 app.get('/popular', function (req, res){
 
