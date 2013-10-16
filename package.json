@@ -1,8 +1,14 @@
 {
   "name": "bing-popular-now",
-  "description": "Popular now search trends + image tiles",
+  "description": "Popular now search trends + image tiles.",
   "version": "0.0.1",
-  "private": true,
+  "author": "Jamie Chung <me@jamiechung.me>",
+  "contributors": [
+    {
+      "name": "Aaron West",
+      "email": "awest@outlook.com"
+    }
+  ],
   "engines": {
     "node": ">=0.10.18"
   },
