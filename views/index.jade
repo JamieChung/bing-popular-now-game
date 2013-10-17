@@ -14,6 +14,8 @@ html(lang="en")
   body
     .board-container
         h1 Bing - Popular Now Game
+        each item in popular_search_trends
+            div #{item.title}
         hr
         div(id="board-image", class="board-image")
             div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000")
