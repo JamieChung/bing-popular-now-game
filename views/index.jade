@@ -22,6 +22,12 @@ html(lang="en")
                         div(class="full board-liner")
                     div
                         img(class="full" src="#{item.image_url}")
+                div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000")
+                    div
+                        div(class="full board-liner")
+                    div
+                        span.textMatch()
+                            | #{item.title}
         hr
         .text-muted
             &copy; 2013 &nbsp;
