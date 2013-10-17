@@ -5,9 +5,8 @@ $(document).ready(function () {
     $('.live-tile').fadeIn('slow');
     $('.live-tile').liveTile({
         click: function ($tile, tileData) {
-            $($tile).liveTile("animate");
-            pauseAll();
-            return false; // or return true; 
+            tileClick($tile);
+            return false;
         }
     });
     $('.live-tile').liveTile("stop");
@@ -27,4 +26,18 @@ function updateBoardImage(){
 
 function pauseAll() {
     $('.live-tile').liveTile("pause");
+}
+
+function tileClick(tile) {    
+    if (memory.open_tiles_count < 2) {
+        // open tile
+        $(tile).liveTile("animate");
+        memory.open_tiles_count++;
+    }    
+    pauseAll();    
+}
+
+memory = {
+    open_tiles_count: 0,
+    matched_tiles_count: 0
 }
