@@ -2,9 +2,6 @@ $(document).ready(function(){
   console.log('We are live!');
   updateBoardImage();
   $('.live-tile').liveTile();
-
-
-
 });
 
 function updateBoardImage(){
