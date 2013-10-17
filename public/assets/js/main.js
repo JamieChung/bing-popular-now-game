@@ -13,6 +13,10 @@ $(document).ready(function () {
     });
     $('.live-tile').liveTile("stop");
     
+    $(window).resize(function () {
+        resizeWindow();
+    });
+    resizeWindow();
 });
 
 function updateBoardImage(){
@@ -57,6 +61,25 @@ function checkForMatch() {
     pauseAll();
     memory.open_tiles = [];
     memory.open_tiles_count = 0;
+}
+
+function resizeWindow() {
+    var width = $(window).width() - 250;
+    var height = $(window).height() - 150;
+    $("#board-image").css({
+        width: width + "px",
+        height: height + "px"
+    });
+    if (width + height < 1800) {
+        $(".text-match").css("font-size", "20px");
+    } else if (width + height > 1800) {
+        $(".text-match").css("font-size", "25px");
+    }
+    $(".live-tile").css({
+        width: width*.13 + "px",
+        height: height*.18 + "px"
+    });
+    
 }
 
 memory = {

@@ -54,6 +54,8 @@ body {
 .board-image {
     height: 640px;
     width: 1366px;
+    max-height: 640px;
+    max-width: 1366px;
     margin: auto;
 }
 
@@ -89,8 +91,7 @@ body {
 }
 
 .live-tile {
-    /*width: 160px !important;
-    height: 80px !important;*/
+    
 }
 
 .text-muted{
