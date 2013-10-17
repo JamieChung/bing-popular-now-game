@@ -1,3 +1,7 @@
+body{
+    font-family: "Segoe UI Light";
+}
+
 .board-container 
 {
     margin-left: 25px;
@@ -17,6 +21,7 @@
 
 .board-liner
 {
+    cursor: pointer;
     opacity: .4;
     background: #000;
     width: 100px;
@@ -25,8 +30,23 @@
     border: 1px solid #fff;
 }
 
+.board-liner:hover{
+    opacity: .5;
+    border: 2px solid #fff;
+}
+
 .board-box
 {
     height: 98px;
     width: 98px;
+}
+
+.text-match{
+    padding: 10px;
+    font-size: 25px;
+}
+
+.live-tile{
+    /*width: 160px !important;
+    height: 80px !important;*/
 }
