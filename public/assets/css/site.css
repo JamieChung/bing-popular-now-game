@@ -18,17 +18,20 @@ body {
     padding-bottom: 10px;
 }
 
-.bing-logo {    
+.bing-logo {
     background-attachment: scroll;
     -moz-background-clip: border-box;
+    -webkit-background-clip: border-box;
     background-clip: border-box;
     background-color: rgba(0, 0, 0, 0);
     background-image: url(http://www.bing.com/s/a/hpc12.png);
     -moz-background-origin: padding-box;
+    -webkit-background-origin: padding-box;
     background-origin: padding-box;
     background-position: 0% 0%;
     -moz-background-size: auto;
     -o-background-size: auto;
+    -webkit-background-size: auto;
     background-size: auto;
     border-collapse: collapse;
     display: block;
