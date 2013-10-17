@@ -16,18 +16,17 @@ html(lang="en")
         h1 Bing - Popular Now Game        
         hr		
         div(id="board-image", class="board-image")
-            each item in popular_search_trends            
-                div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000")
+            each item in popular_search_trends 			           
+                div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000", data-query="#{item.query}")
                     div
                         div(class="full board-liner")
-                    div
-                        img(class="full" src="#{item.image_url}")
-                div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000")
-                    div
-                        div(class="full board-liner")
-                    div.text-match()
-                        span
-                            | #{item.title}
+                    if(item.isImage)
+                        div.img-match()
+                            img(class="full" src="#{item.image_url}")
+                    else
+                        div.text-match()
+                            span
+                                | #{item.title}
         hr
         .text-muted
             &copy; 2013 &nbsp;
