@@ -44,6 +44,10 @@ body{
 .text-match{
     padding: 10px;
     font-size: 25px;
+    border: 1px solid #fff;
+    opacity: .7;
+    background: #000;
+        
 }
 
 .live-tile{
