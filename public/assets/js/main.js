@@ -37,6 +37,12 @@ function pauseAll() {
     $('.live-tile').liveTile("pause");
 }
 
+function rotateAll() {
+    $('.live-tile').liveTile("animate");
+    pauseAll();    
+    return "Cheater";
+}
+
 function tileClick(tile) {    
     if (memory.open_tiles_count < 2) {
         // open tile
@@ -81,8 +87,7 @@ function resizeWindow() {
     $(".live-tile").css({
         width: width*.13 + "px",
         height: height*.18 + "px"
-    });
-    
+    });    
 }
 
 memory = {
