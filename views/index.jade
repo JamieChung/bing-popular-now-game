@@ -13,16 +13,15 @@ html(lang="en")
     script(type="text/javascript", src="/js/external/MetroJs.js")
   body
     .board-container
-        h1 Bing - Popular Now Game
-        each item in popular_search_trends
-            div #{item.title}
-        hr
+        h1 Bing - Popular Now Game        
+        hr		
         div(id="board-image", class="board-image")
-            div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000")
-                div
-                    div(class="full board-liner")
-                div
-                    img(class="full" src="http://www.bing.com/th?id=OS.6CG2N6vHlTKrgr72pCUVWw600C600&w=160&h=80&c=8&rs=2&qlt=80&pcl=f9f9f9&pid=PopNow")
+            each item in popular_search_trends            
+                div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000")
+                    div
+                        div(class="full board-liner")
+                    div
+                        img(class="full" src="#{item.image_url}")
         hr
         .text-muted
             &copy; 2013 &nbsp;
