@@ -3,9 +3,30 @@
     margin-left: 25px;
 }
 
+.board-pic
+{
+    height: 98px;
+    width: 98px;
+}
+
 .board-image
 {
     width:1400px;
     height: 800px;
-    
+}
+
+.board-liner
+{
+    opacity: .4;
+    background: #000;
+    width: 100px;
+    height: 100px;
+    padding: 1px;
+    border: 1px solid #fff;
+}
+
+.board-box
+{
+    height: 98px;
+    width: 98px;
 }

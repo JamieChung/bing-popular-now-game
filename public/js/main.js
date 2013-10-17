@@ -1,6 +1,7 @@
 $(document).ready(function(){
   console.log('We are live!');
-  updateBoardImage()
+  updateBoardImage();
+  $('.live-tile').liveTile();
 });
 
 function updateBoardImage(){
