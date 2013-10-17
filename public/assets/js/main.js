@@ -2,14 +2,16 @@ $(document).ready(function () {
     updateBoardImage();
     $('.live-tile').hide();
 
-    $.getJSON('/popular', function (data) {
-
-        $('.live-tile').fadeIn('slow');
-        $('.live-tile').liveTile();
-
-        console.log('this is where we manipulate data');
-        console.log(data);
+    $('.live-tile').fadeIn('slow');
+    $('.live-tile').liveTile({
+        click: function ($tile, tileData) {
+            $($tile).liveTile("animate");
+            pauseAll();
+            return false; // or return true; 
+        }
     });
+    $('.live-tile').liveTile("stop");
+    
 });
 
 function updateBoardImage(){
@@ -21,4 +23,8 @@ function updateBoardImage(){
             $('#board-image').fadeIn('fast');
         } 
     });
+}
+
+function pauseAll() {
+    $('.live-tile').liveTile("pause");
 }
