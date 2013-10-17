@@ -18,7 +18,7 @@ app.configure(function(){
 // Homepage
 app.get('/', function (req, res) {
     
-    res.render('index', createPeicesArray());
+    res.render('index', createPiecesArray());
 });
 
 // Proxy for the homepage images
@@ -197,7 +197,7 @@ function getJS() {
     };
 }
 
-function createPeicesArray()
+function createPiecesArray()
 {
     subjects = getJS().popular_search_trends;
     var subjectsGo = subjects.slice(0);
