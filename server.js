@@ -18,7 +18,7 @@ app.configure(function(){
 // Homepage
 app.get('/', function (req, res) {
     
-    res.render('index', getJS());
+    res.render('index', createPeicesArray());
 });
 
 // Proxy for the homepage images
@@ -195,4 +195,28 @@ function getJS() {
           }
         ]
     };
+}
+
+function createPeicesArray()
+{
+    subjects = getJS().popular_search_trends;
+    var subjectsGo = subjects.slice(0);
+    for(var i = 0; i < subjects.length; i++)
+    {
+      var cloned = clone(subjects[i]);
+      cloned.isImage = true;  
+      subjectsGo.push(cloned);
+    }
+    return { "popular_search_trends":subjectsGo };
+}
+
+function clone(obj){
+    if(obj == null || typeof(obj) != 'object')
+        return obj;
+
+    var temp = obj.constructor(); // changed
+
+    for(var key in obj)
+        temp[key] = clone(obj[key]);
+    return temp;
 }
