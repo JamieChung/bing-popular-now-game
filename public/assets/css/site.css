@@ -57,14 +57,17 @@ body {
     margin: auto;
 }
 
-.board-liner {
-    cursor: pointer;
+.board-liner {    
     opacity: .4;
     background: #000;
     width: 100px;
     height: 100px;
     padding: 1px;
     border: 1px solid #fff;
+}
+
+.found{
+    cursor: auto !important;
 }
 
     .board-liner:hover {

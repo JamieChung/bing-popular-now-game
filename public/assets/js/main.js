@@ -5,9 +5,10 @@ $(document).ready(function () {
     $('.live-tile').fadeIn('slow');
     $('.live-tile').liveTile({
         click: function ($tile, tileData) {
-            $($tile).liveTile("animate");
-            pauseAll();
-            return false; // or return true; 
+            if (!$($tile).hasClass("found") && $tile !== memory.open_tiles[0]) {
+                tileClick($tile);
+            }
+            return false;
         }
     });
     $('.live-tile').liveTile("stop");
@@ -27,4 +28,39 @@ function updateBoardImage(){
 
 function pauseAll() {
     $('.live-tile').liveTile("pause");
+}
+
+function tileClick(tile) {    
+    if (memory.open_tiles_count < 2) {
+        // open tile
+        $(tile).liveTile("animate");
+        memory.open_tiles_count++;
+        memory.open_tiles.push(tile)        
+        if (memory.open_tiles_count === 2) {
+            setTimeout(checkForMatch, 750);
+        }
+    }    
+    pauseAll();    
+}
+
+function checkForMatch() {
+    if (memory.open_tiles[0].data("query") === memory.open_tiles[1].data("query")) {
+        $(memory.open_tiles[0]).addClass("found").find("div").animate({ opacity: 0 }, 750);
+        $(memory.open_tiles[1]).addClass("found").find("div").animate({ opacity: 0 }, 750);
+        memory.matched_tiles_count += 2;
+    } else {        
+        $(memory.open_tiles[0]).effect("shake", { times: 3 }, "slow");
+        $(memory.open_tiles[1]).effect("shake", { times: 2 }, "slow");
+        $(memory.open_tiles[0]).liveTile("animate");
+        $(memory.open_tiles[1]).liveTile("animate");
+    }
+    pauseAll();
+    memory.open_tiles = [];
+    memory.open_tiles_count = 0;
+}
+
+memory = {
+    open_tiles_count: 0,
+    matched_tiles_count: 0,
+    open_tiles:[] 
 }
