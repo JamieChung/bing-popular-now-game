@@ -10,11 +10,11 @@ body {
 }
 
 .title {
+    margin: 20px auto 0;
+    width: 1366px;
     color: #fff;
     font-size: 33px;
     font-weight: 900;
-    margin-left: 116px;
-    margin-top: 20px;
     padding-bottom: 10px;
 }
 

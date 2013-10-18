@@ -12,10 +12,10 @@ $(document).ready(function () {
     });
     $('.live-tile').liveTile("stop");
     
-    $(window).resize(function () {
-        resizeWindow();
-    });
-    resizeWindow();
+    // $(window).resize(function () {
+    //     resizeWindow();
+    // });
+    // resizeWindow();
 
     $('#board-video').hide();
     $.getJSON('/videos', function(data){
