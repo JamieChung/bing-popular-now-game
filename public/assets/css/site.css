@@ -1,6 +1,6 @@
 body {
     font-family: "Segoe UI Light";
-    position: fixed;
+    /*position: fixed;*/
     background: #333;
     width: 100%;
 }
@@ -18,17 +18,20 @@ body {
     padding-bottom: 10px;
 }
 
-.bing-logo {    
+.bing-logo {
     background-attachment: scroll;
     -moz-background-clip: border-box;
+    -webkit-background-clip: border-box;
     background-clip: border-box;
     background-color: rgba(0, 0, 0, 0);
     background-image: url(http://www.bing.com/s/a/hpc12.png);
     -moz-background-origin: padding-box;
+    -webkit-background-origin: padding-box;
     background-origin: padding-box;
     background-position: 0% 0%;
     -moz-background-size: auto;
     -o-background-size: auto;
+    -webkit-background-size: auto;
     background-size: auto;
     border-collapse: collapse;
     display: block;
@@ -51,17 +54,22 @@ body {
 .board-image {
     height: 640px;
     width: 1366px;
+    max-height: 640px;
+    max-width: 1366px;
     margin: auto;
 }
 
-.board-liner {
-    cursor: pointer;
+.board-liner {    
     opacity: .4;
     background: #000;
     width: 100px;
     height: 100px;
     padding: 1px;
     border: 1px solid #fff;
+}
+
+.found{
+    cursor: auto !important;
 }
 
     .board-liner:hover {
@@ -83,6 +91,9 @@ body {
 }
 
 .live-tile {
-    /*width: 160px !important;
-    height: 80px !important;*/
+    
+}
+
+.text-muted{
+    margin-left: 115px;
 }

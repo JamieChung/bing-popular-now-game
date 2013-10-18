@@ -8,6 +8,7 @@ html(lang="en")
     link(rel="stylesheet", type="text/css" href="/assets/css/external/MetroJs.css")
 
     script(type="text/javascript", src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+    script(type="text/javascript", src="//code.jquery.com/ui/1.10.3/jquery-ui.js")
     script(type="text/javascript", src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js")
     script(type="text/javascript", src="/assets/js/main.js")
     script(type="text/javascript", src="/assets/js/external/MetroJs.js")
@@ -19,7 +20,7 @@ html(lang="en")
                 | &mdash; Popular Now				        
         div(id="board-image", class="board-image")
             each item in popular_search_trends 	
-                div(class="live-tile",data-mode="flip" data-speed="750", data-delay="4000", data-query="#{item.query}")
+                div(class="live-tile", data-mode="flip", data-query="#{item.query}")
                     div
                         div(class="full board-liner")
                     if(item.isImage)
@@ -37,3 +38,8 @@ html(lang="en")
             span |
             &nbsp;
             a(href="http://twitter.com/ammobear") Aaron West
+            &nbsp;
+            span |
+            &nbsp;
+            a(href="http://twitter.com/danbut") Dan But
+            &nbsp;
