@@ -30,6 +30,10 @@ $(document).ready(function () {
             document.getElementById('board-video').play();   
         }
     });
+
+    if ( location.hash == '#winning' ) {
+        rotateAll();
+    }
 });
 
 function updateBoardImage(){
