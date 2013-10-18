@@ -93,7 +93,7 @@ function checkForMatch() {
 function resizeWindow() {
     var width = $(window).width() - 250;
     var height = $(window).height() - 150;
-    $("#board-image").css({
+    $("#board-canvas,#board-image").css({
         width: width + "px",
         height: height + "px"
     });
