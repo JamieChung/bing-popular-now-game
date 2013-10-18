@@ -61,25 +61,25 @@ body {
     overflow: hidden;
 }
 
-.board-layer {
-    height: 768px;
-    width: 1366px;
-    max-height: 768px;
-    max-width: 1366px;
-    position: absolute;
+    .board-layer {
+        height: 768px;
+        width: 1366px;
+        max-height: 768px;
+        max-width: 1366px;
+        position: absolute;
 
-}
-.board-image {
-    z-index: 5;
-}
+    }
+        #board-image {
+            z-index: 5;
+        }
 
-#board-video {
-    z-index: 10;
-}
+        #board-video {
+            z-index: 10;
+        }
 
-#board-tiles {
-    top: 0;
-}
+        #board-tiles {
+            top: 0;
+        }
 
 .board-liner {    
     opacity: .4;
@@ -150,10 +150,15 @@ footer {
     padding: 15px 10px;
     text-align: right;
 }
-footer a {
-    color: #999;
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline;
-}
+    footer hr {
+        border-top: 1px solid #222;
+    }
+
+    footer a {
+        color: #999;
+        text-decoration: none;
+    }
+        footer a:hover {
+            text-decoration: underline;
+            color: #999;
+        }
