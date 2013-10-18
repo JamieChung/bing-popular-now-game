@@ -23,7 +23,7 @@ html(lang="en")
             div.board-layer(id="board-image", class="board-image")
             div.board-layer(id="board-tiles")
                 each item in popular_search_trends 	
-                div(class="live-tile", data-mode="flip", data-query="#{item.query}", data-url="#{item.query_url}", data-title="#{item.title}", data-imgurl="#{item.image_url}")
+                    div(class="live-tile", data-mode="flip", data-query="#{item.query}", data-url="#{item.query_url}", data-title="#{item.title}", data-imgurl="#{item.image_url}")
                         div
                             div(class="full board-liner")
                         if(item.isImage)
