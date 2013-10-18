@@ -4,6 +4,7 @@ var request = require('request')
 var cheerio = require('cheerio')
 var fs = require('fs')
 var app = express();
+//var XRegExp = require('xregexp').XRegExp;
 
 app.use(express.logger());
 app.use(express.static(__dirname + '/public'));
@@ -24,6 +25,18 @@ app.get('/', function (req, res) {
 app.get('/images', function(req, res){
   request.get('http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=10').pipe(res);
 });
+
+// API request to get current homepage video
+// app.get('/video', function(req, res){
+//   request('http://www.bing.com',
+//     function (error, response, body){
+
+//       var regex = /(var g_vid =(\[\[(.+)\]\])\;)/gm;
+//       console.log(regex.test(body));
+
+//       res.end();
+//     });
+// });
 
 // API request
 app.get('/popular', function (req, res){
