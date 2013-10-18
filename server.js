@@ -27,16 +27,16 @@ app.get('/images', function(req, res){
 });
 
 // API request to get current homepage video
-app.get('/video', function(req, res){
-  request('http://www.bing.com',
-    function (error, response, body){
+// app.get('/video', function(req, res){
+//   request('http://www.bing.com',
+//     function (error, response, body){
 
-      var regex = /(var g_vid =(\[\[(.+)\]\])\;)/gm;
-      console.log(regex.test(body));
+//       var regex = /(var g_vid =(\[\[(.+)\]\])\;)/gm;
+//       console.log(regex.test(body));
 
-      res.end();
-    });
-});
+//       res.end();
+//     });
+// });
 
 // API request
 app.get('/popular', function (req, res){
