@@ -58,6 +58,9 @@ function checkForMatch() {
         $(memory.open_tiles[0]).addClass("found").find("div").animate({ opacity: 0 }, 750);
         $(memory.open_tiles[1]).addClass("found").find("div").animate({ opacity: 0 }, 750);
         memory.matched_tiles_count += 2;
+        if (memory.matched_tiles_count === 30) {
+            winnerWinner();
+        }
     } else {        
         $(memory.open_tiles[0]).effect("shake", { times: 3 }, "slow");
         $(memory.open_tiles[1]).effect("shake", { times: 2 }, "slow");
@@ -85,6 +88,15 @@ function resizeWindow() {
         width: width*.13 + "px",
         height: height*.18 + "px"
     });    
+}
+
+function winnerWinner() {
+    $(".live-tile").hide();
+    fireworks();
+}
+
+function fireworks() {
+    return "Fireworks";
 }
 
 memory = {
