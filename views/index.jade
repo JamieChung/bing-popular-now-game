@@ -17,25 +17,26 @@ html(lang="en")
         div.title()
             span
                 div.bing-logo()
-                | &mdash; Popular Now				        
+                | &mdash; Popular Now		
         div#board-canvas
             video.board-layer#board-video(loop, autobuffer, preload="auto")		        
             div.board-layer(id="board-image", class="board-image")
             div.board-layer(id="board-tiles")
-            each item in popular_search_trends 	
+                each item in popular_search_trends 	
                 div(class="live-tile", data-mode="flip", data-query="#{item.query}", data-url="#{item.query_url}", data-title="#{item.title}", data-imgurl="#{item.image_url}")
-                    div
-                        div(class="full board-liner")
-                    if(item.isImage)
-                        div.img-match()
-                            img(class="full" src="#{item.image_url}")
-                    else
-                        div.text-match()
-                            span
-                                | #{item.title}
+                        div
+                            div(class="full board-liner")
+                        if(item.isImage)
+                            div.img-match()
+                                img(class="full" src="#{item.image_url}")
+                        else
+                            div.text-match()
+                                span
+                                    | #{item.title}
         div(id="matches")
         hr
         .text-muted
+        footer
             &copy; 2013 &nbsp;
             a(href="http://twitter.com/jamiechung") Jamie Chung
             &nbsp;
