@@ -20,7 +20,7 @@ html(lang="en")
                 | &mdash; Popular Now		
         div#board-canvas
             video.board-layer#board-video(loop, autobuffer, preload="auto")		        
-            div.board-layer(id="board-image", class="board-image")
+            div.board-layer(id="board-image")
             div.board-layer(id="board-tiles")
                 each item in popular_search_trends 	
                     div(class="live-tile", data-mode="flip", data-query="#{item.query}", data-url="#{item.query_url}", data-title="#{item.title}", data-imgurl="#{item.image_url}")
@@ -34,9 +34,8 @@ html(lang="en")
                                 span
                                     | #{item.title}
         div(id="matches")
-        hr
-        .text-muted
         footer
+            hr
             &copy; 2013 &nbsp;
             a(href="http://twitter.com/jamiechung") Jamie Chung
             &nbsp;
