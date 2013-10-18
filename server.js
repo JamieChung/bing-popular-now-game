@@ -4,7 +4,7 @@ var request = require('request')
 var cheerio = require('cheerio')
 var fs = require('fs')
 var app = express();
-var XRegExp = require('xregexp').XRegExp;
+//var XRegExp = require('xregexp').XRegExp;
 
 app.use(express.logger());
 app.use(express.static(__dirname + '/public'));
