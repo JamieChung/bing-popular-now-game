@@ -59,7 +59,9 @@ function tileClick(tile) {
 function checkForMatch() {
     if (memory.open_tiles[0].data("query") === memory.open_tiles[1].data("query")) {
         $(memory.open_tiles[0]).addClass("found").find("div").animate({ opacity: 0 }, 750);
-        $(memory.open_tiles[1]).addClass("found").find("div").animate({ opacity: 0 }, 750);
+        $(memory.open_tiles[1]).addClass("found").find("div").animate({ opacity: 0 }, 750);        
+        $("#matches").append("<a style='display: none' target='_blank' href='http://bing.com/" + $(memory.open_tiles[0]).data("url") + "' ><span><span>" + $(memory.open_tiles[0]).data("title") + "</span><img src='" + $(memory.open_tiles[0]).data("imgurl") + "' /></span></a>");
+        $("#matches > a").fadeIn("slow");
         memory.matched_tiles_count += 2;
         if (memory.matched_tiles_count === 30) {
             winnerWinner();
@@ -68,7 +70,7 @@ function checkForMatch() {
         $(memory.open_tiles[0]).effect("shake", { times: 3 }, "slow");
         $(memory.open_tiles[1]).effect("shake", { times: 2 }, "slow");
         $(memory.open_tiles[0]).liveTile("animate");
-        $(memory.open_tiles[1]).liveTile("animate");
+        $(memory.open_tiles[1]).liveTile("animate");        
     }
     pauseAll();
     memory.open_tiles = [];
@@ -82,12 +84,15 @@ function resizeWindow() {
         width: width + "px",
         height: height + "px"
     });
+    $("#matches").css({
+        width: width + "px"
+    })
     if (width + height < 1800) {
         $(".text-match").css("font-size", "20px");
     } else if (width + height > 1800) {
         $(".text-match").css("font-size", "25px");
     }
-    $(".live-tile").css({
+    $(".live-tile").css({        
         width: width*.13 + "px",
         height: height*.18 + "px"
     });    
