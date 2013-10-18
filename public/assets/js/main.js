@@ -27,8 +27,12 @@ $(document).ready(function () {
     $.getJSON('/videos', function(data){
 
         // Only load the images if we have no videos
-        if ( data.videos.length == 0 || mobile ) {
-            updateBoardImage();  
+        if ( data.videos.length == 0 || mobile || location.hash == '#mobile') {
+
+            $.getJSON('/images', function(data){
+                homepage_images = data.images;
+                updateBoardImage();
+            });
         } 
         else {
             var video = data.videos[1];
@@ -42,17 +46,20 @@ $(document).ready(function () {
     }
 });
 
-function updateBoardImage(){
-    $('#board-image').hide();
-    $.ajax({ url: "/images", success: 
-        function(data, textStatus, jqXHR){
-            var i = data.images.length;
-            i = Math.floor((Math.random() * i) );
+var homepage_images;
 
-            $("#board-image").css("background-image", "url(http://bing.com/" + data.images[i].url + ")");
-            $("#board-image").css("background-repeat", "no-repeat");
-            $('#board-image').fadeIn('fast');
-        } 
+function updateBoardImage(){
+    $('#board-image').fadeOut('fast', function(){
+
+        var i = homepage_images.length;
+        i = Math.floor((Math.random() * i) );
+
+        $("#board-image").css("background-image", "url(http://bing.com/" + homepage_images[i].url + ")");
+        $("#board-image").css("background-repeat", "no-repeat");
+        $('#board-image').fadeIn('fast');
+
+        setTimeout("updateBoardImage()", 5*1000);
+
     });
 }
 
