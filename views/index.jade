@@ -18,7 +18,10 @@ html(lang="en")
             span
                 div.bing-logo()
                 | &mdash; Popular Now				        
-        div(id="board-image", class="board-image")
+        div#board-canvas
+            video.board-layer#board-video(loop, autobuffer, preload="auto")		        
+            div.board-layer(id="board-image", class="board-image")
+            div.board-layer(id="board-tiles")
             each item in popular_search_trends 	
                 div(class="live-tile", data-mode="flip", data-query="#{item.query}", data-url="#{item.query_url}", data-title="#{item.title}", data-imgurl="#{item.image_url}")
                     div

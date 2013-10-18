@@ -51,12 +51,34 @@ body {
     width: 98px;
 }
 
-.board-image {
+#board-canvas {
     height: 640px;
     width: 1366px;
     max-height: 640px;
     max-width: 1366px;
-    margin: auto;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.board-layer {
+    height: 768px;
+    width: 1366px;
+    max-height: 768px;
+    max-width: 1366px;
+    position: absolute;
+
+}
+.board-image {
+    z-index: 5;
+}
+
+#board-video {
+    z-index: 10;
+}
+
+#board-tiles {
+    top: 0;
 }
 
 .board-liner {
