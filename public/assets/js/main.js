@@ -72,7 +72,12 @@ function tileClick(tile) {
 function checkForMatch() {
     if (memory.open_tiles[0].data("query") === memory.open_tiles[1].data("query")) {
         $(memory.open_tiles[0]).addClass("found").find("div").animate({ opacity: 0 }, 750);
-        $(memory.open_tiles[1]).addClass("found").find("div").animate({ opacity: 0 }, 750);        
+        $(memory.open_tiles[1]).addClass("found").find("div").animate({ opacity: 0 }, 750);
+
+        if ( memory.matched_tiles_count == 0 ) {
+            $('#matches').css('opacity', 0.7).fadeIn('fast');
+        }
+
         $("#matches").append("<a style='display: none' target='_blank' href='http://bing.com/" + $(memory.open_tiles[0]).data("url") + "' ><span><span>" + $(memory.open_tiles[0]).data("title") + "</span><img src='" + $(memory.open_tiles[0]).data("imgurl") + "' /></span></a>");
         $("#matches > a").fadeIn("slow");
         memory.matched_tiles_count += 2;

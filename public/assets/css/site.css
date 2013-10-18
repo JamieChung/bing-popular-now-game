@@ -120,15 +120,16 @@ body {
 }
 
 #matches {
-    margin-top: 20px;
-    margin-left: 97px;
+    margin: 0 auto;
     overflow-x: auto;
     white-space: nowrap;
-    height: 112px;
+    background: #000;
+    display: none;
+    padding: 10px;
 }
 
     #matches > a {
-        margin-left: 22px;
+        margin: 10px 20px;
     }
 
         #matches > a > span {
@@ -141,7 +142,11 @@ body {
                 color: #fff;
                 width: 100%;
                 opacity: 0.7;
-}
+            }
+
+                #matches > a > span > img {
+                    border: 1px solid #111;
+                }
 
 footer {
     margin: 0 auto;
