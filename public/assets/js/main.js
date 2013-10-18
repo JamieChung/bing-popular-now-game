@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    updateBoardImage();
     $('.live-tile').hide();
 
     $('.live-tile').fadeIn('slow');
@@ -17,6 +16,20 @@ $(document).ready(function () {
         resizeWindow();
     });
     resizeWindow();
+
+    $('#board-video').hide();
+    $.getJSON('/videos', function(data){
+
+        // Only load the images if we have no videos
+        if ( data.videos.length == 0 ) {
+            updateBoardImage();  
+        } 
+        else {
+            var video = data.videos[1];
+            $('#board-video').attr('src', video.source).fadeIn('fast');
+            document.getElementById('board-video').play();   
+        }
+    });
 });
 
 function updateBoardImage(){

@@ -4,7 +4,6 @@ var request = require('request')
 var cheerio = require('cheerio')
 var fs = require('fs')
 var app = express();
-//var XRegExp = require('xregexp').XRegExp;
 
 app.use(express.logger());
 app.use(express.static(__dirname + '/public'));
@@ -27,16 +26,31 @@ app.get('/images', function(req, res){
 });
 
 // API request to get current homepage video
-// app.get('/video', function(req, res){
-//   request('http://www.bing.com',
-//     function (error, response, body){
+app.get('/videos', function(req, res){
 
-//       var regex = /(var g_vid =(\[\[(.+)\]\])\;)/gm;
-//       console.log(regex.test(body));
+  // we have to fake the user agent so that we can get HTML5 video
+  var agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.69 Safari/537.36'
 
-//       res.end();
-//     });
-// });
+  request.get({url: 'http://www.bing.com', headers: {'user-agent': agent}},
+    function (error, response, body){
+      var regex = /(var g_vid =(\[\[(.+)\]\])\;)/gm;
+      var matches = regex.exec(body);
+
+      var g_vid;
+      var items = [];
+
+      if (matches && matches[1]) eval(matches[1]);
+
+      for ( var i in g_vid ) {
+        items.push({
+          codec: g_vid[i][0],
+          source: 'http://www.bing.com' + g_vid[i][1]
+        });
+      }
+
+      res.json({videos: items});
+    });
+});
 
 // API request
 app.get('/popular', function (req, res){
