@@ -1,6 +1,12 @@
 $(document).ready(function () {
     $('.live-tile').hide();
 
+    var mobile = false;
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        mobile = true;
+    }
+
     $('.live-tile').fadeIn('slow');
     $('.live-tile').liveTile({
         click: function ($tile, tileData) {
@@ -21,7 +27,7 @@ $(document).ready(function () {
     $.getJSON('/videos', function(data){
 
         // Only load the images if we have no videos
-        if ( data.videos.length == 0 ) {
+        if ( data.videos.length == 0 || mobile ) {
             updateBoardImage();  
         } 
         else {
