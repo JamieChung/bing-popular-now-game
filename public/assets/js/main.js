@@ -1,11 +1,7 @@
 $(document).ready(function () {
     $('.live-tile').hide();
 
-    var mobile = false;
-
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        mobile = true;
-    }
+    var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     $('.live-tile').fadeIn('slow');
     $('.live-tile').liveTile({
@@ -17,7 +13,7 @@ $(document).ready(function () {
         }
     });
     $('.live-tile').liveTile("stop");
-    
+
     // $(window).resize(function () {
     //     resizeWindow();
     // });
@@ -33,11 +29,11 @@ $(document).ready(function () {
                 homepage_images = data.images;
                 updateBoardImage();
             });
-        } 
+        }
         else {
             var video = data.videos[1];
             $('#board-video').attr('src', video.source).fadeIn('fast');
-            document.getElementById('board-video').play();   
+            document.getElementById('board-video').play();
         }
     });
 
@@ -69,21 +65,21 @@ function pauseAll() {
 
 function rotateAll() {
     $('.live-tile').liveTile("animate");
-    pauseAll();    
+    pauseAll();
     return "Cheater";
 }
 
-function tileClick(tile) {    
+function tileClick(tile) {
     if (memory.open_tiles_count < 2) {
         // open tile
         $(tile).liveTile("animate");
         memory.open_tiles_count++;
-        memory.open_tiles.push(tile)        
+        memory.open_tiles.push(tile)
         if (memory.open_tiles_count === 2) {
             setTimeout(checkForMatch, 750);
         }
-    }    
-    pauseAll();    
+    }
+    pauseAll();
 }
 
 function checkForMatch() {
@@ -101,11 +97,11 @@ function checkForMatch() {
         if (memory.matched_tiles_count === 30) {
             winnerWinner();
         }
-    } else {        
+    } else {
         $(memory.open_tiles[0]).effect("shake", { times: 3 }, "slow");
         $(memory.open_tiles[1]).effect("shake", { times: 2 }, "slow");
         $(memory.open_tiles[0]).liveTile("animate");
-        $(memory.open_tiles[1]).liveTile("animate");        
+        $(memory.open_tiles[1]).liveTile("animate");
     }
     pauseAll();
     memory.open_tiles = [];
@@ -127,10 +123,10 @@ function resizeWindow() {
     } else if (width + height > 1800) {
         $(".text-match").css("font-size", "25px");
     }
-    $(".live-tile").css({        
+    $(".live-tile").css({
         width: width*.13 + "px",
         height: height*.18 + "px"
-    });    
+    });
 }
 
 function winnerWinner() {
@@ -145,5 +141,5 @@ function fireworks() {
 memory = {
     open_tiles_count: 0,
     matched_tiles_count: 0,
-    open_tiles:[] 
+    open_tiles:[]
 }
