@@ -52,49 +52,58 @@ app.get('/videos', function(req, res){
     });
 });
 
-// API request
 app.get('/', function (req, res){
-
-  // Send a request to the /hpm page of bing
-  request('http://www.bing.com/hpm',
+  request('http://azurethon.cloudapp.net/api/popular',
     function (error, response, body){
 
-      // manually load the HTML into a cheerio object
-      var $ = cheerio.load(body);
-      var items = [];
-
-      // we will get all the items in the carousel
-      $('#crs_pane li').each(function(i, el){
-        var link = $(el).find('a').attr('href');
-
-        // We need to get the query parameters for the link
-        // Credit to:
-        // http://stevenbenner.com/2010/03/javascript-regex-trick-parse-a-query-string-into-an-object/
-        var queryString = {};
-        link.replace(
-            new RegExp("([^?=&]+)(=([^&]*))?", "g"),
-            function($0, $1, $2, $3) { queryString[$1] = $3; }
-        );
-
-        var image = $(el).find('img').attr('src');
-
-        if (image){
-          // Store the item in the object array
-          items.push({
-            title: $(el).text().replace('·', ''),
-            query: queryString["q"],
-            query_url: link,
-            image_url: 'http://www.bing.com' + image,
-            image_width: 160,
-            image_height: 80
-          });
-        }
-      });
-
-      // return a json response with the results
-      res.render('index', createPiecesArray(items));
+      console.log(body);
+      res.render('index', createPiecesArray(JSON.parse(body).popular_search_trends));
     });
 });
+
+// API request
+// app.get('/', function (req, res){
+
+//   // Send a request to the /hpm page of bing
+//   request('http://www.bing.com/hpm',
+//     function (error, response, body){
+
+//       // manually load the HTML into a cheerio object
+//       var $ = cheerio.load(body);
+//       var items = [];
+
+//       // we will get all the items in the carousel
+//       $('#crs_pane li').each(function(i, el){
+//         var link = $(el).find('a').attr('href');
+
+//         // We need to get the query parameters for the link
+//         // Credit to:
+//         // http://stevenbenner.com/2010/03/javascript-regex-trick-parse-a-query-string-into-an-object/
+//         var queryString = {};
+//         link.replace(
+//             new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+//             function($0, $1, $2, $3) { queryString[$1] = $3; }
+//         );
+
+//         var image = $(el).find('img').attr('src');
+
+//         if (image){
+//           // Store the item in the object array
+//           items.push({
+//             title: $(el).text().replace('·', ''),
+//             query: queryString["q"],
+//             query_url: link,
+//             image_url: 'http://www.bing.com' + image,
+//             image_width: 160,
+//             image_height: 80
+//           });
+//         }
+//       });
+
+//       // return a json response with the results
+//       res.render('index', createPiecesArray(items));
+//     });
+// });
 
 var port = process.env.PORT || 3000;
 app.listen(port);
@@ -116,12 +125,15 @@ function shuffle(input) {
 
 function createPiecesArray(subjects)
 {
-    var subjectsGo = subjects.slice(0);
+    var subjectsGo = [];
     for(var i = 0; i < subjects.length; i++)
     {
       var cloned = clone(subjects[i]);
       cloned.isImage = true;
-      subjectsGo.push(cloned);
+      if ( cloned.image_url.indexOf('undefined') == -1 || cloned.image_url !== "http://www.bing.comundefined") {
+        subjectsGo.push(cloned);
+        subjectsGo.push(subjects[i]);
+      }
     }
     subjectsGo = shuffle(subjectsGo);
     return { "popular_search_trends":subjectsGo };
