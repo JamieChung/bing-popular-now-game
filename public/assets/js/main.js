@@ -43,12 +43,18 @@ $(document).ready(function () {
 });
 
 var homepage_images;
+var first_homepage = true;
 
 function updateBoardImage(){
     $('#board-image').fadeOut('fast', function(){
 
         var i = homepage_images.length;
         i = Math.floor((Math.random() * i) );
+
+        if ( first_homepage ) {
+            i = 0;
+            first_homepage = false;
+        }
 
         $("#board-image").css("background-image", "url(http://bing.com/" + homepage_images[i].url + ")");
         $("#board-image").css("background-repeat", "no-repeat");

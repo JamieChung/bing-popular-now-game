@@ -92,7 +92,6 @@ app.get('/', function (req, res){
       });
 
       // return a json response with the results
-      // res.json();
       res.render('index', createPiecesArray(items));
     });
 });
