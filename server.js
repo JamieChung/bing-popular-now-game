@@ -55,8 +55,6 @@ app.get('/videos', function(req, res){
 app.get('/', function (req, res){
   request('http://azurethon.cloudapp.net/api/popular',
     function (error, response, body){
-
-      console.log(body);
       res.render('index', createPiecesArray(JSON.parse(body).popular_search_trends));
     });
 });
